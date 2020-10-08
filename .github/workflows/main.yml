@@ -1,0 +1,48 @@
+
+name: Deploy
+
+on:
+  workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Prepare
+        run: |
+          sudo apt-get update && sudo apt-get install -y reprepro
+          cargo install cargo-deb
+
+      - name: Clone
+        run: |
+          git clone https://github.com/qeda/qeda-cli.git --depth=1
+
+      - name: Build DEB
+        run: |
+          cd qeda-cli
+          cargo deb
+          mv -fv target/debian/*.deb ../
+
+      - name: Setup the APT Repository
+        shell: bash
+        env:
+          PRIVATE_KEY: ${{ secrets.PGP_PRIVATE_KEY }}
+        run: |
+          gpg --import gpg
+          echo "$PRIVATE_KEY" > private.key
+          gpg --import private.key
+          reprepro -V -S qeda --outdir ./deploy/deb includedeb qeda *.deb
+          cp -fv gpg ./deploy/
+          cp -fv setup ./deploy/
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deploy
+          cname: pkg.qeda.org
+          force_orphan: true
+          user_name: 'qedabot'
+          user_email: 'qedabot@users.noreply.github.com'
