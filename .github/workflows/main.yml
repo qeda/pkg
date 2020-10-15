@@ -10,6 +10,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Copy Windows SFX
+        run: |
+          wget -nc -P ./deploy/win https://builds.qeda.org/dev/qeda-windows-x86_64-dev.exe
+
+      - name: Setup `winget` repository (TODO)
+        run: |
+          wget -nc -P ./deploy/cache https://github.com/qeda/pkg/releases/download/win/source.msix
+
+
       - name: Prepare
         run: |
           sudo apt-get update && sudo apt-get install -y reprepro
