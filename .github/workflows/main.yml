@@ -17,6 +17,7 @@ jobs:
       - name: Setup `winget` repository (TODO)
         run: |
           wget -nc -P ./deploy/cache https://github.com/qeda/pkg/releases/download/win/source.msix
+          cp -frv manifests ./deploy/cache/
 
 
       - name: Prepare
