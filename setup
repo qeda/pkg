@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#
+# Ubuntu:
+#     curl -sL https://pkg.qeda.org/setup | sudo -E bash -
+#
+# Debian (root):
+#     curl -sL https://pkg.qeda.org/setup | bash -
+#
+
+apt-get install wget
+wget -qO- https://pkg.qeda.org/gpg | gpg --dearmor | dd of=/etc/apt/trusted.gpg.d/qeda.gpg
+echo 'deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/qeda.gpg] https://pkg.qeda.org/deb qeda main' > /etc/apt/sources.list.d/qeda.list
+apt-get update
+apt-get install -y qeda

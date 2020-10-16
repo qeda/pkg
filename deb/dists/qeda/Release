@@ -1,0 +1,16 @@
+Codename: qeda
+Date: Fri, 16 Oct 2020 13:52:39 UTC
+Architectures: amd64
+Components: main
+MD5Sum:
+ 85de23a51f1cbf883f460a1b1c97e7aa 4236 main/binary-amd64/Packages
+ eaaa4c3aaa4e536b64deac9630c0912e 1808 main/binary-amd64/Packages.gz
+ 063287201b2354699acfe229a752201d 36 main/binary-amd64/Release
+SHA1:
+ 6494b7a0d0490d5f39b09457e0cbf25c13423320 4236 main/binary-amd64/Packages
+ ffcb0362d78a31e423ffbd9539679d4376dcb917 1808 main/binary-amd64/Packages.gz
+ f9082edea14092794f38390390e06abf8a922f7d 36 main/binary-amd64/Release
+SHA256:
+ a69ddac0d4094b8c78d82866041a735637e2998d570071734875e6db1e9a30e4 4236 main/binary-amd64/Packages
+ 751382e5fa2b0e9c55faaaaecf0cc2673891c93c3df1127e69ee64485c9554c8 1808 main/binary-amd64/Packages.gz
+ f4aafa353a338baedf9e98523c13d7ffeda979ec3cf745f9fad977dd770595c8 36 main/binary-amd64/Release
